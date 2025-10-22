@@ -1,8 +1,6 @@
 import os
 import datetime
-from PIL import Image, ImageTk
-import tkinter as tk
-from tkinter import filedialog, messagebox
+from PIL import Image, ImageTk # Нужен для работой с изображениями
 
 def get_image_info(image_path):
     """Получает информацию об изображении."""
@@ -33,4 +31,4 @@ def rename_image(image_path, new_name):
     new_image_path = os.path.join(dir_name, new_name + ext)
 
     if os.path.isfile(new_image_path):
-        return None, f"Ошибка:
+      return None, f"Ошибка:" # Исправил кавычку
