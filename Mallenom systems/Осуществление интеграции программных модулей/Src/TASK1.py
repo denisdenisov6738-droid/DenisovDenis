@@ -3,14 +3,14 @@ from PIL import Image
 
 current_path = None
 
-while True:
+while True: # бесконечный цикл программы
     print("\n1 - Выбрать изображение")
     print("2 - Информация") 
     print("3 - Переименовать")
     
-    choice = input("Выбор: ") #UI
+    choice = input("Выбор: ") # Меню выбора действий
     
-    if choice == "1":
+    if choice == "1": # Первая функция выбора изображения
         path = input("Путь к файлу: ")
         if os.path.isfile(path):
             current_path = path
@@ -18,14 +18,14 @@ while True:
         else:
             print("Файл не найден")
             
-    elif choice == "2":
+    elif choice == "2": # Достаем информацию о картинке
         if not current_path:
             print("Сначала выберите файл")
             continue
             
         try:
-            with Image.open(current_path) as img:
-                size = os.path.getsize(current_path)
+            with Image.open(current_path) as img:#(Разрешение, размер, вес, файл)
+                size = os.path.getsize(current_path) 
                 print(f"Файл: {os.path.basename(current_path)}")
                 print(f"Размер: {img.size[0]}x{img.size[1]} пикселей")
                 print(f"Вес: {size} байт")
@@ -33,7 +33,7 @@ while True:
         except:
             print("Ошибка открытия файла")
             
-    elif choice == "3":
+    elif choice == "3":#Переименование картинки с проверкой
         if not current_path:
             print("Сначала выберите файл")
             continue
@@ -43,7 +43,7 @@ while True:
             print("Имя не может быть пустым")
             continue
             
-        ext = os.path.splitext(current_path)[1]
+        ext = os.path.splitext(current_path)[1]#Запрос на новое имя
         new_path = os.path.join(os.path.dirname(current_path), new_name + ext)
         
         if os.path.exists(new_path):
